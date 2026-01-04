@@ -1,16 +1,23 @@
 function burgerMenu() {
   const burger = document.querySelector(".header__burger");
-  const navbar = document.querySelector(".header__navbar");
   const menu = document.querySelector(".header__menu");
   const body = document.body;
 
-  if (!burger || !navbar || !menu) return;
+  if (!burger || !menu) return;
 
   burger.addEventListener("click", () => {
     burger.classList.toggle("active-burger");
-    menu.classList.toggle("active-menu"); // приховуємо bars
-    navbar.classList.toggle("active"); // показуємо меню
-    body.classList.toggle("lock"); // блокуємо прокрутку
+    menu.classList.toggle("active-menu");
+    body.classList.toggle("lock");
+  });
+
+  menu.addEventListener("click", (e) => {
+    const link = e.target.closest(".header__menu-link");
+    if (!link) return;
+
+    burger.classList.remove("active-burger");
+    menu.classList.remove("active-menu");
+    body.classList.remove("lock");
   });
 }
 

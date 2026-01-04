@@ -140,7 +140,7 @@ body.locked {
 }
 
 .header__logo {
-  z-index: 101;
+  z-index: 100;
 }
 
 .header__logo-link {
@@ -218,6 +218,7 @@ body.lock {
   background-image: url(./../img/Hero-Section.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .hero__wrapper {
@@ -300,15 +301,69 @@ body.lock {
   letter-spacing: 0.02em;
   color: #ffffff;
   text-transform: uppercase;
+  z-index: 3;
+}
+
+.hero__span {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .hero__img {
+  position: absolute;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 14px;
-  height: 7px;
+  height: 14px;
   color: #ffffff;
+  -webkit-animation: arrow-way 3s ease-in-out infinite;
+          animation: arrow-way 3s ease-in-out infinite;
+}
+
+@-webkit-keyframes arrow-way {
+  0% {
+    top: 0;
+  }
+
+  30% {
+    top: 20px;
+  }
+
+  60% {
+    top: -15px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes arrow-way {
+  0% {
+    top: 0;
+  }
+
+  30% {
+    top: 20px;
+  }
+
+  60% {
+    top: -15px;
+  }
+
+  100% {
+    top: 0;
+  }
 }
 
 .about {
@@ -1912,6 +1967,11 @@ body {
     padding: 80px 0;
   }
 
+  .contacts__cols-left {
+    padding: 30px 20px;
+    width: 460px;
+  }
+
   .contacts__title {
     font-size: 18px;
     line-height: 28px;
@@ -1989,15 +2049,8 @@ body {
   }
 
   .header__menu {
-    display: none;
-  }
-
-  .header__menu.active-menu {
     position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
+    inset: 0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2011,11 +2064,25 @@ body {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    z-index: 9;
     background-image: url(./../img/Hero-Section.jpg);
-    gap: 20px;
-    -webkit-transition: 0.3s all;
-    transition: 0.3s all;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(-20px);
+        -ms-transform: translateY(-20px);
+            transform: translateY(-20px);
+    -webkit-transition: opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
+  }
+
+  .header__menu.active-menu {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+            transform: translateY(0);
+    z-index: 90;
   }
 
   .header__menu-link {
@@ -2084,6 +2151,10 @@ body {
   .header__burger::after {
     bottom: 0;
     left: 0;
+  }
+
+  .hero__wrapper {
+    height: 690px;
   }
 
   .hero__title {
@@ -2361,6 +2432,10 @@ body {
 
   .hero {
     padding: 30px 0;
+  }
+
+  .hero__wrapper {
+    height: 520px;
   }
 
   .hero__text {
@@ -2679,13 +2754,13 @@ body {
 
 @media (max-width: 374.98px) {
   .container {
-    max-width: 340px;
+    max-width: 320px;
     padding: 0 5px;
   }
 
   .header__menu-link {
     font-size: 20px;
-    line-height: 24px;
+    line-height: 36px;
   }
 
   .header__burger {
@@ -2695,6 +2770,10 @@ body {
 
   .header__burger span {
     top: 7px;
+  }
+
+  .hero__wrapper {
+    height: 520px;
   }
 
   .about__wrapper {
@@ -2821,27 +2900,27 @@ body {
 
   .contacts__cols-left {
     padding: 20px 15px;
-    width: 310px;
+    width: 290px;
     gap: 16px;
   }
 
   .contacts__form {
-    width: 280px;
+    width: 260px;
   }
 
   .contacts__input {
-    width: 280px;
+    width: 260px;
   }
 
   .contacts__textarea {
-    width: 280px !important;
+    width: 260px !important;
   }
 
   .contacts__button {
     padding: 10px 20px;
   }
 
-  .contacts__cols-right {
+  .contacts__lisit {
     padding-left: 10px;
   }
 
